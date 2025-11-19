@@ -1,0 +1,17 @@
+{
+  "chunking": {
+    "strategy": "section-aware",
+    "chunk_size": 1024,
+    "chunk_overlap": 128
+  },
+  "metadata": {
+    "extract_breadcrumbs": true,
+    "extract_section_titles": true,
+    "extract_domain_tags": true,
+    "extract_viq_hints": true
+  },
+  "embedding": {
+    "model": "text-embedding-3-large",
+    "batch_size": 128
+  }
+}

@@ -1,0 +1,1375 @@
+================================================================================
+HTML STRUCTURE ANALYSIS REPORT
+File: C:\sms\andriki\documents\5.06 Passage Planning.html
+File Size: 1,531,449 bytes
+================================================================================
+
+
+================================================================================
+TABLE OF CONTENTS ANALYSIS
+================================================================================
+
+{
+  "toc_indicators_found": [],
+  "toc_links": [
+    {
+      "href": "#_Toc194412259",
+      "text": "1.KEY RESPONSIBILITIES",
+      "parent": "p"
+    },
+    {
+      "href": "#_Toc194412260",
+      "text": "2.REQUIREMENTS FOR PASSAGE PLAN",
+      "parent": "p"
+    },
+    {
+      "href": "#_Toc194412261",
+      "text": "3.PASSAGE PLANNING - PROCESS FLOW",
+      "parent": "p"
+    },
+    {
+      "href": "#_Toc194412262",
+      "text": "4.STAGES OF PASSAGE PLANNING",
+      "parent": "p"
+    },
+    {
+      "href": "#_Toc194412263",
+      "text": "4.1Receipt of Voyage Orders & Preliminary Assessment",
+      "parent": "p"
+    },
+    {
+      "href": "#_Toc194412264",
+      "text": "4.1.1Reviewing & Sharing Voyage Orders",
+      "parent": "p"
+    },
+    {
+      "href": "#_Toc194412265",
+      "text": "4.1.2Preliminary Assessment of Passage",
+      "parent": "p"
+    },
+    {
+      "href": "#_Toc194412266",
+      "text": "4.2Appraisal",
+      "parent": "p"
+    },
+    {
+      "href": "#_Toc194412267",
+      "text": "4.2.1Objective",
+      "parent": "p"
+    },
+    {
+      "href": "#_Toc194412268",
+      "text": "4.2.2Checking Availability of Charts & Publications",
+      "parent": "p"
+    }
+  ],
+  "toc_structure": {
+    "tag": "div",
+    "attributes": {
+      "data-toc": "1"
+    },
+    "child_count": 247
+  },
+  "toc_location": null,
+  "total_toc_links": 36
+}
+
+
+================================================================================
+HEADING STRUCTURE ANALYSIS
+================================================================================
+
+{
+  "standard_headings": [
+    {
+      "level": 2,
+      "id": "",
+      "text": "4.1Receipt of Voyage Orders & Preliminary Assessment",
+      "has_id": false,
+      "id_type": "no_id"
+    },
+    {
+      "level": 2,
+      "id": "",
+      "text": "4.2Appraisal",
+      "has_id": false,
+      "id_type": "no_id"
+    },
+    {
+      "level": 2,
+      "id": "",
+      "text": "4.3Planning",
+      "has_id": false,
+      "id_type": "no_id"
+    },
+    {
+      "level": 2,
+      "id": "",
+      "text": "4.4Execution",
+      "has_id": false,
+      "id_type": "no_id"
+    },
+    {
+      "level": 2,
+      "id": "",
+      "text": "4.5Monitoring",
+      "has_id": false,
+      "id_type": "no_id"
+    },
+    {
+      "level": 2,
+      "id": "",
+      "text": "4.6Amendments to the Passage Plan",
+      "has_id": false,
+      "id_type": "no_id"
+    },
+    {
+      "level": 2,
+      "id": "",
+      "text": "4.7Debriefing of the Passage Plan Post Voyage",
+      "has_id": false,
+      "id_type": "no_id"
+    }
+  ],
+  "paragraph_headings": [],
+  "heading_ids": [],
+  "id_patterns": {}
+}
+
+
+================================================================================
+ANCHOR TAG ANALYSIS
+================================================================================
+
+{
+  "link_anchors": [
+    {
+      "href": "#_Toc194412259",
+      "text": "1.KEY RESPONSIBILITIES",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412260",
+      "text": "2.REQUIREMENTS FOR PASSAGE PLAN",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412261",
+      "text": "3.PASSAGE PLANNING - PROCESS FLOW",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412262",
+      "text": "4.STAGES OF PASSAGE PLANNING",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412263",
+      "text": "4.1Receipt of Voyage Orders & Preliminary Assessment",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412264",
+      "text": "4.1.1Reviewing & Sharing Voyage Orders",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412265",
+      "text": "4.1.2Preliminary Assessment of Passage",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412266",
+      "text": "4.2Appraisal",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412267",
+      "text": "4.2.1Objective",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412268",
+      "text": "4.2.2Checking Availability of Charts & Publications",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412269",
+      "text": "4.2.3Updating Charts/ Publications & Other Information Sourc",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412270",
+      "text": "4.2.4Collecting information from all sources",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412271",
+      "text": "4.2.5Assessing the Information and Identifying Risks",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412272",
+      "text": "4.2.6Loading data in ECDIS",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412273",
+      "text": "4.2.7Voyage Planning & Risk Assessment for Transiting Throug",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412274",
+      "text": "4.3Planning",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412275",
+      "text": "4.3.1Objective",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412276",
+      "text": "4.3.2Setting Up ECDIS for Planning",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412277",
+      "text": "4.3.3Plotting the Route leg by leg & Vessel Settings",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412278",
+      "text": "4.3.4Markings on ENCs",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412279",
+      "text": "4.3.5Route Validation",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412280",
+      "text": "4.3.6Position Fixing/ Verification Intervals & Methods",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412281",
+      "text": "4.3.7Information to Include in the Final Passage Plan",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412282",
+      "text": "4.3.8Passage Plan Review & Approval",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412283",
+      "text": "4.4Execution",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412284",
+      "text": "4.4.1Pre-Voyage Meeting",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412285",
+      "text": "4.4.2Execution of the Passage Plan",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412286",
+      "text": "4.5Monitoring",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412287",
+      "text": "4.5.1General",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412288",
+      "text": "4.5.2Toolbox Meetings",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412289",
+      "text": "4.5.3Monitoring Using ECDIS",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412290",
+      "text": "4.6Amendments to the Passage Plan",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412291",
+      "text": "4.7Debriefing of the Passage Plan Post Voyage",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412292",
+      "text": "5.OFFICE REVIEW OF PASSAGE PLANS",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412293",
+      "text": "6.FORMS",
+      "is_toc": true
+    },
+    {
+      "href": "#_Toc194412294",
+      "text": "7.COMPLIANCE",
+      "is_toc": true
+    },
+    {
+      "href": "#DAB",
+      "text": "",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=088_F088",
+      "text": "F088 Passage Plan",
+      "is_toc": false
+    },
+    {
+      "href": "#sec_2",
+      "text": "Sec 2",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.21.00",
+      "text": "Doc 5.21.00",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=088_F088",
+      "text": "F088 Passage Planning",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.21.00",
+      "text": "Doc 5.21.00",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.07.00",
+      "text": "Doc 5.07.00",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.15.00",
+      "text": "Doc 5.15.00",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=088_F088",
+      "text": "F088 Passage Planning",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=13.02",
+      "text": "Doc 13.02 Ship Security",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=088_F088",
+      "text": "F088 Passage Pan",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.07.00",
+      "text": "Doc 5.07.00",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.07.00",
+      "text": "Doc 5.07.00",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.08",
+      "text": "Doc 5.08",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.09",
+      "text": "Doc 5.09",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=088_F088",
+      "text": "F088 Passage Planning",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.11",
+      "text": "Doc 5.11",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.14.00",
+      "text": "Doc 5.14.00",
+      "is_toc": false
+    },
+    {
+      "href": "#sec_4_3_6",
+      "text": "Sec 4.3.",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.11",
+      "text": "Doc 5.11",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.13",
+      "text": "Doc 5.13",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.11",
+      "text": "Doc 5.11",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.07.00",
+      "text": "Doc 5.07.00",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.08",
+      "text": "5.08",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.11",
+      "text": "Doc 5.11",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.05.00",
+      "text": "5.05.00",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=088_F088",
+      "text": "F088",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=088_F088",
+      "text": "F088",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=088_F088",
+      "text": "F088",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=088_F088",
+      "text": "F088",
+      "is_toc": false
+    },
+    {
+      "href": "#sec_4_6",
+      "text": "section 4.6",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.04",
+      "text": "Doc 5.04 Bridge Team & Resource Management",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=5.20",
+      "text": "Doc 5.20",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=088_F088",
+      "text": "F088 Passage Planning",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=088_F088",
+      "text": "F088 Passage Planning",
+      "is_toc": false
+    },
+    {
+      "href": "safety/sms?id=088_F088A",
+      "text": "F088A UKC",
+      "is_toc": false
+    }
+  ],
+  "name_anchors": [
+    {
+      "name": "_Toc529439808",
+      "text": "Ch. 5 – NAVIGATION",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc72228377",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193744",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412259",
+      "text": "KEY RESPONSIBILITIES",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc72228384",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193745",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412260",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "sec_2",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc34123795",
+      "text": "REQUIREMENTSFOR PASSAGE PLAN",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc72228385",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193746",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412261",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc34123796",
+      "text": "PASSAGE PLANNING - PROCESS FLOW",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193747",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412262",
+      "text": "STAGES OF PASSAGE PLANNING",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193748",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc194412263",
+      "text": "Receipt of Voyage Orders & Preliminary Assessment",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc163193749",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412264",
+      "text": "Reviewing & Sharing Voyage Orders",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193750",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412265",
+      "text": "Preliminary Assessment of Passage",
+      "parent": "p"
+    },
+    {
+      "name": "DAB",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc72228387",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc163193751",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc194412266",
+      "text": "Appraisal",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc163193752",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412267",
+      "text": "Objective",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193753",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412268",
+      "text": "Checking Availability of Charts & Publications",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193754",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412269",
+      "text": "Updating Charts/ Publications & Other Information Sources",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193755",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412270",
+      "text": "Collecting information from all sources",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193756",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412271",
+      "text": "Assessing the Information and Identifying Risks",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193757",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412272",
+      "text": "Loading data in ECDIS",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193759",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412273",
+      "text": "Voyage Planning & Risk Assessment for Transiting Through Inc",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193760",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc194412274",
+      "text": "Planning",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc163193761",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412275",
+      "text": "Objective",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193762",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412276",
+      "text": "Setting Up ECDIS for Planning",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193763",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412277",
+      "text": "Plotting the Route leg by leg & Vessel Settings",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc72228391",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193764",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412278",
+      "text": "Markings on ENCs",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193765",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412279",
+      "text": "Route Validation",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193766",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412280",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "sec_4_3_6",
+      "text": "Position Fixing/ Verification Intervals & Methods",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193767",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412281",
+      "text": "Information to Include in the Final Passage Plan",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193768",
+      "text": "Expect the vessel to deviate from the planned passage to the",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412282",
+      "text": "Passage Plan Review & Approval",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc480240160",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc34123798",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc72228395",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc163193769",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc194412283",
+      "text": "Execution",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc72228396",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193770",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412284",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc29478940",
+      "text": "Pre-VoyageMeeting",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc72228397",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193771",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412285",
+      "text": "Execution of the Passage Plan",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc480240161",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc34123799",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc72228398",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc163193772",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc194412286",
+      "text": "Monitoring",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc163193773",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412287",
+      "text": "General",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193774",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412288",
+      "text": "Toolbox Meetings",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193775",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412289",
+      "text": "Monitoring Using ECDIS",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc72228400",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc163193776",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc194412290",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "sec_4_6",
+      "text": "Amendments to the Passage Plan",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc163193777",
+      "text": "",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc194412291",
+      "text": "Debriefing of the Passage Plan Post Voyage",
+      "parent": "h2"
+    },
+    {
+      "name": "_Toc163193778",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412292",
+      "text": "OFFICE REVIEW OF PASSAGE PLANS",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193779",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412293",
+      "text": "FORMS",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc163193780",
+      "text": "",
+      "parent": "p"
+    },
+    {
+      "name": "_Toc194412294",
+      "text": "COMPLIANCE",
+      "parent": "p"
+    }
+  ],
+  "toc_anchors": [
+    {
+      "href": "#_Toc194412259",
+      "text": "1.KEY RESPONSIBILITIES"
+    },
+    {
+      "href": "#_Toc194412260",
+      "text": "2.REQUIREMENTS FOR PASSAGE PLAN"
+    },
+    {
+      "href": "#_Toc194412261",
+      "text": "3.PASSAGE PLANNING - PROCESS FLOW"
+    },
+    {
+      "href": "#_Toc194412262",
+      "text": "4.STAGES OF PASSAGE PLANNING"
+    },
+    {
+      "href": "#_Toc194412263",
+      "text": "4.1Receipt of Voyage Orders & Preliminary Assessment"
+    },
+    {
+      "href": "#_Toc194412264",
+      "text": "4.1.1Reviewing & Sharing Voyage Orders"
+    },
+    {
+      "href": "#_Toc194412265",
+      "text": "4.1.2Preliminary Assessment of Passage"
+    },
+    {
+      "href": "#_Toc194412266",
+      "text": "4.2Appraisal"
+    },
+    {
+      "href": "#_Toc194412267",
+      "text": "4.2.1Objective"
+    },
+    {
+      "href": "#_Toc194412268",
+      "text": "4.2.2Checking Availability of Charts & Publications"
+    },
+    {
+      "href": "#_Toc194412269",
+      "text": "4.2.3Updating Charts/ Publications & Other Information Sourc"
+    },
+    {
+      "href": "#_Toc194412270",
+      "text": "4.2.4Collecting information from all sources"
+    },
+    {
+      "href": "#_Toc194412271",
+      "text": "4.2.5Assessing the Information and Identifying Risks"
+    },
+    {
+      "href": "#_Toc194412272",
+      "text": "4.2.6Loading data in ECDIS"
+    },
+    {
+      "href": "#_Toc194412273",
+      "text": "4.2.7Voyage Planning & Risk Assessment for Transiting Throug"
+    },
+    {
+      "href": "#_Toc194412274",
+      "text": "4.3Planning"
+    },
+    {
+      "href": "#_Toc194412275",
+      "text": "4.3.1Objective"
+    },
+    {
+      "href": "#_Toc194412276",
+      "text": "4.3.2Setting Up ECDIS for Planning"
+    },
+    {
+      "href": "#_Toc194412277",
+      "text": "4.3.3Plotting the Route leg by leg & Vessel Settings"
+    },
+    {
+      "href": "#_Toc194412278",
+      "text": "4.3.4Markings on ENCs"
+    },
+    {
+      "href": "#_Toc194412279",
+      "text": "4.3.5Route Validation"
+    },
+    {
+      "href": "#_Toc194412280",
+      "text": "4.3.6Position Fixing/ Verification Intervals & Methods"
+    },
+    {
+      "href": "#_Toc194412281",
+      "text": "4.3.7Information to Include in the Final Passage Plan"
+    },
+    {
+      "href": "#_Toc194412282",
+      "text": "4.3.8Passage Plan Review & Approval"
+    },
+    {
+      "href": "#_Toc194412283",
+      "text": "4.4Execution"
+    },
+    {
+      "href": "#_Toc194412284",
+      "text": "4.4.1Pre-Voyage Meeting"
+    },
+    {
+      "href": "#_Toc194412285",
+      "text": "4.4.2Execution of the Passage Plan"
+    },
+    {
+      "href": "#_Toc194412286",
+      "text": "4.5Monitoring"
+    },
+    {
+      "href": "#_Toc194412287",
+      "text": "4.5.1General"
+    },
+    {
+      "href": "#_Toc194412288",
+      "text": "4.5.2Toolbox Meetings"
+    },
+    {
+      "href": "#_Toc194412289",
+      "text": "4.5.3Monitoring Using ECDIS"
+    },
+    {
+      "href": "#_Toc194412290",
+      "text": "4.6Amendments to the Passage Plan"
+    },
+    {
+      "href": "#_Toc194412291",
+      "text": "4.7Debriefing of the Passage Plan Post Voyage"
+    },
+    {
+      "href": "#_Toc194412292",
+      "text": "5.OFFICE REVIEW OF PASSAGE PLANS"
+    },
+    {
+      "href": "#_Toc194412293",
+      "text": "6.FORMS"
+    },
+    {
+      "href": "#_Toc194412294",
+      "text": "7.COMPLIANCE"
+    }
+  ],
+  "anchor_patterns": {
+    "_Toc (TOC)": 90,
+    "custom": 4
+  }
+}
+
+
+================================================================================
+LIST STRUCTURE ANALYSIS
+================================================================================
+
+{
+  "unordered_lists": 58,
+  "ordered_lists": 131,
+  "list_items": 220,
+  "nested_lists": 0,
+  "list_samples": [
+    {
+      "items": [
+        "Review the voyage orders and pass on relevant information to:"
+      ],
+      "item_count": 1
+    },
+    {
+      "items": [
+        "Conduct a preliminary assessment, to verify if vessel can:"
+      ],
+      "item_count": 1
+    },
+    {
+      "items": [
+        "Safely call both load & discharge ports, &",
+        "Safely transit areas with any limiting conditions."
+      ],
+      "item_count": 2
+    }
+  ]
+}
+
+
+================================================================================
+PARAGRAPH ANALYSIS
+================================================================================
+
+{
+  "total_paragraphs": 745,
+  "styled_paragraphs": 745,
+  "bold_paragraphs": 0,
+  "class_distribution": {},
+  "style_patterns": {}
+}
+
+
+================================================================================
+TABLE ANALYSIS
+================================================================================
+
+{
+  "total_tables": 24,
+  "tables_with_toc": 0,
+  "sample_tables": [
+    {
+      "rows": 6,
+      "cells": 12,
+      "preview": "RESPONSIBILITY OFFICER • Preparing the Passage Plan. Navigation Officer • Reviewing & Approval of Passage plan. Master • Understanding, Acknowledgement & Signing of Passage plan. • Raising any concern"
+    }
+  ]
+}
+
+
+================================================================================
+STYLE & CSS ANALYSIS
+================================================================================
+
+{
+  "elements_with_style": 3803,
+  "common_style_properties": {
+    "margin-top": 999,
+    "margin-bottom": 901,
+    "font-size": 1305,
+    "width": 959,
+    "font-weight": 89,
+    "color": 1321,
+    "text-decoration": 182,
+    "text-transform": 14,
+    "margin-left": 766,
+    "border": 313,
+    "padding-top": 83,
+    "padding-right": 59,
+    "padding-bottom": 39,
+    "background-color": 453,
+    "border-collapse": 24,
+    "height": 185,
+    "border-top": 277,
+    "border-right": 185,
+    "border-left": 174,
+    "border-bottom": 233,
+    "padding": 529,
+    "vertical-align": 529,
+    "margin": 189,
+    "padding-left": 425,
+    "text-align": 203,
+    "font-family": 397,
+    "line-height": 15,
+    "font-style": 54
+  },
+  "aspose_attributes": {}
+}
+
+
+================================================================================
+DOCUMENT HIERARCHY
+================================================================================
+
+{
+  "max_depth": 6,
+  "structure_outline": [
+    {
+      "tag": "table",
+      "depth": 1,
+      "id": "",
+      "text": "RESPONSIBILITYOFFICER•Preparing the Passage Plan.N"
+    },
+    {
+      "tag": "table",
+      "depth": 1,
+      "id": "",
+      "text": "REQUIREMENTPASSAGE PLAN MUSTCompliance•Comply with"
+    },
+    {
+      "tag": "ol",
+      "depth": 4,
+      "id": "",
+      "text": ""
+    },
+    {
+      "tag": "ol",
+      "depth": 4,
+      "id": "",
+      "text": ""
+    },
+    {
+      "tag": "ol",
+      "depth": 4,
+      "id": "",
+      "text": ""
+    },
+    {
+      "tag": "ol",
+      "depth": 4,
+      "id": "",
+      "text": ""
+    },
+    {
+      "tag": "ol",
+      "depth": 4,
+      "id": "",
+      "text": ""
+    },
+    {
+      "tag": "ol",
+      "depth": 4,
+      "id": "",
+      "text": ""
+    },
+    {
+      "tag": "ol",
+      "depth": 4,
+      "id": "",
+      "text": ""
+    },
+    {
+      "tag": "h2",
+      "depth": 2,
+      "id": "",
+      "text": "4.1Receipt of Voyage Orders & Preliminary Assessme"
+    },
+    {
+      "tag": "ul",
+      "depth": 1,
+      "id": "",
+      "text": "Review the voyage orders and pass on relevant info"
+    },
+    {
+      "tag": "table",
+      "depth": 1,
+      "id": "",
+      "text": "OFFICERFOR PRELIMINARY ASSESSMENT OFNavigation Off"
+    },
+    {
+      "tag": "ol",
+      "depth": 4,
+      "id": "",
+      "text": ""
+    },
+    {
+      "tag": "ol",
+      "depth": 4,
+      "id": "",
+      "text": ""
+    },
+    {
+      "tag": "ol",
+      "depth": 4,
+      "id": "",
+      "text": ""
+    },
+    {
+      "tag": "ul",
+      "depth": 1,
+      "id": "",
+      "text": "Conduct a preliminary assessment, to verify if ves"
+    },
+    {
+      "tag": "ul",
+      "depth": 1,
+      "id": "",
+      "text": "Safely call both load & discharge ports, &Safely t"
+    },
+    {
+      "tag": "ul",
+      "depth": 1,
+      "id": "",
+      "text": "Assess factors including (but not limited to) foll"
+    },
+    {
+      "tag": "table",
+      "depth": 1,
+      "id": "",
+      "text": "UKC/ Drafts:•Vessel will be able to comply with UK"
+    },
+    {
+      "tag": "ol",
+      "depth": 4,
+      "id": "",
+      "text": ""
+    }
+  ]
+}
+
+
+================================================================================
+SAMPLE HTML SECTIONS
+================================================================================
+
+
+Sample list structure:
+--------------------------------------------------------------------------------
+<ul style="margin: 0pt; padding-left: 0pt" type="disc"><li style="margin-top: 6pt; margin-left: 24.72pt; text-align: justify; padding-left: 3.63pt; font-family: serif; font-size: 12pt"><span style="font-family: Verdana; font-size: 10pt">Review the voyage orders and pass on relevant information to:</span></li></ul>
+--------------------------------------------------------------------------------
+

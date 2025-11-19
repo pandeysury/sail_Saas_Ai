@@ -1,0 +1,118 @@
+# version: '3.8'
+# services:
+#   app:
+#     # build: .
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     container_name: sms-rag-app
+#     restart: unless-stopped
+#     ports:
+#       - "8000:8000"
+#     # volumes:
+#     #   - ./data:/app/data:rw
+#     volumes:
+#       - ./app/data:/app/data:rw
+#       # REMOVE THIS LINE:
+#       # - ./chat_history.db:/app/chat_history.db:rw
+#     environment:
+#       - ENVIRONMENT=docker
+#       - BASE_DIR=/app/data
+#       - OPENAI_API_KEY=${OPENAI_API_KEY}
+#     env_file:
+#       - .env
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 3
+#       start_period: 40s
+    # new line added by arushi
+    # networks:
+    #   - ragnet
+
+
+  # -------------------------------
+  # REACT FRONTEND (VITE + NGINX)
+  # -------------------------------
+  # frontend:
+  #   # build: ./frontend/chat-to-sms
+  #   build:
+  #     context: ./frontend/chat-to-sms
+  #     dockerfile: Dockerfile
+  #   container_name: sms-rag-frontend
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3000:80"            
+  #   depends_on:
+  #     - app            
+    # networks:
+    #   - ragnet
+
+# -------------------------------
+# NETWORK CONFIGURATION
+# -------------------------------
+# networks:
+#   ragnet:
+#     driver: bridge
+
+
+
+
+# version: '3.8'
+
+# services:
+#   app:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile   # backend Dockerfile
+#     container_name: sms-rag-app
+#     restart: unless-stopped
+
+#     ports:
+#       - "8000:8000"
+
+#     volumes:
+#       - ./app/data:/app/data:rw
+
+#     environment:
+#       - ENVIRONMENT=docker
+#       - BASE_DIR=/app/data
+#       - OPENAI_API_KEY=${OPENAI_API_KEY}
+
+#     env_file:
+#       - .env
+
+#     healthcheck:
+#       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+#       interval: 30s
+#       timeout: 10s
+#       retries: 3
+#       start_period: 40s
+
+
+
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: sms-rag-app
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./app/data:/app/data:rw
+    environment:
+      - ENVIRONMENT=docker
+      - BASE_DIR=/app/data
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    env_file:
+      - .env
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
