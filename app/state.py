@@ -7,6 +7,13 @@ from typing import Dict, Tuple
 from app.config import settings
 from app.services import build_retriever_bundle
 
+# Auto-detect the directory of this file → gives you /app/
+PROJECT_ROOT = Path(__file__).resolve().parent
+
+# Automatically use app/data as client base
+DYNAMIC_CLIENTS_BASE = PROJECT_ROOT / "data"
+DYNAMIC_CLIENTS_BASE.mkdir(parents=True, exist_ok=True)
+
 # Cache: (client_id, index_name) -> bundle
 _BUNDLES: Dict[Tuple[str, str], dict] = {}
 
@@ -18,12 +25,12 @@ def _norm(s: str | None, fallback: str) -> str:
 
 def _clients_base() -> Path:
     """
-    Resolve parent folder that contains all client folders.
+    ALWAYS load client folders from app/data dynamically.
+    No hard-coded absolute paths.
     """
-    base = settings.base_dir  # ← FIXED: removed data_root reference
-    p = Path(base).expanduser().resolve()
+    p = DYNAMIC_CLIENTS_BASE
     if not p.exists():
-        raise FileNotFoundError(f"Clients base directory not found: {p}")
+        p.mkdir(parents=True, exist_ok=True)
     return p
 
 
@@ -37,9 +44,6 @@ def _client_root(client_id: str) -> Path:
 def get_bundle(client_id: str | None = None, index_name: str | None = None) -> dict:
     """
     Build or return a cached retriever bundle for a given tenant/index.
-
-    - client_id: tenant id (folder under CLIENTS_BASE)
-    - index_name: logical index name; defaults to client_id
     """
     client = _norm(client_id, settings.default_client_id)
     index = _norm(index_name, client)
