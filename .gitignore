@@ -1,0 +1,25 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+.venv/
+
+# Environment variables
+.env
+
+# Databases
+*.db
+
+# Logs and temporary files
+logs/
+*.log
+*.bak
+
+# Build/generated files
+*.txt
+!README.md
+
+# Docker artifacts
+docker-compose.yml.bak
