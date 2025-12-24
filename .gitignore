@@ -8,6 +8,10 @@ venv/
 
 # Environment variables
 .env
+#env
+.env
+.env local
+env.env
 
 # Databases
 *.db
@@ -23,3 +27,4 @@ logs/
 
 # Docker artifacts
 docker-compose.yml.bak
+.env

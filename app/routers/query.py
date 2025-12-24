@@ -895,27 +895,22 @@ def ask(req: AskRequest):
         
         logger.info(f"[ASK] ✅ Request completed in {total_time_ms}ms")
         
-        # Store conversation history (with client_id for isolation)
+        # Store conversation history using proper memory store
         try:
-            history_key = f"{req.client_id}_{req.conversation_id}"
-            CONVERSATION_HISTORY[history_key].append({"role": "user", "content": req.question})
-            CONVERSATION_HISTORY[history_key].append({"role": "assistant", "content": answer})
+            from app.memory_store import get_store
+            store = get_store()
+            
+            full_conversation_id = f"{req.client_id}:{req.conversation_id}"
+            store.store_message("user", req.question, full_conversation_id)
+            store.store_message("assistant", answer, full_conversation_id)
             if refs_block:
-                CONVERSATION_HISTORY[history_key].append({"role": "assistant", "content": refs_block})
-            logger.info(f"[HISTORY] Stored {len(CONVERSATION_HISTORY[history_key])} messages for {req.client_id}:{req.conversation_id}")
+                store.store_message("assistant", refs_block, full_conversation_id)
+                
+            logger.info(f"[HISTORY] Stored messages for {full_conversation_id}")
+            
         except Exception as hist_err:
             logger.warning(f"[HISTORY] Failed to store: {hist_err}")
 
-        # Persist to SQLite (user, assistant, refs)
-        _db_insert_message(req.client_id, req.conversation_id, "user", req.question)
-        _db_insert_message(req.client_id, req.conversation_id, "assistant", answer)
-        if refs_block:
-            _db_insert_message(req.client_id, req.conversation_id, "assistant", refs_block)
-
-
-        # NEW: Persist both messages to SQLite
-        #_db_insert_message(req.client_id, req.conversation_id, "user", req.question)
-        #_db_insert_message(req.client_id, req.conversation_id, "assistant", answer)
 
         return AskResponse(
             answer=answer,
@@ -960,23 +955,23 @@ async def get_history(conversation_id: str, client_id: Optional[str] = None):
         List of messages with role (user/assistant) and content
     """
     try:
-        # Prefer persistent SQLite history (client-scoped if provided)
-        db_rows = _db_fetch_history(client_id, conversation_id)
-        if db_rows:
-            logger.info(f"[HISTORY][SQLite] Returning {len(db_rows)} messages for {client_id}:{conversation_id}")
-            return db_rows
-
-        # Fallback: in-memory (legacy)
-        if client_id:
-            history_key = f"{client_id}_{conversation_id}"
-            logger.info(f"[HISTORY] Fetching history for {client_id}:{conversation_id}")
+        from app.memory_store import get_store
+        store = get_store()
+        if client_id and not conversation_id.startswith(f"{client_id}:"):
+            full_conversation_id = f"{client_id}:{conversation_id}"
         else:
-            history_key = conversation_id
-            logger.info(f"[HISTORY] Fetching history for: {conversation_id}")
-            
-        history = CONVERSATION_HISTORY.get(history_key, [])
-        logger.info(f"[HISTORY] Returning {len(history)} messages")
+            full_conversation_id = conversation_id
+        messages = store.fetch_all(full_conversation_id)
+        history = []
+        for msg in messages:
+            history.append({
+                "role": msg.role,
+                "content": msg.content
+            })
+        
+        logger.info(f"[HISTORY] Returning {len(history)} messages for {full_conversation_id}")
         return history
+        
     except Exception as e:
         logger.error(f"[HISTORY] Error fetching history: {e}")
         return []

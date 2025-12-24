@@ -6,7 +6,11 @@ Works for ANY maritime safety management system documentation
 import os
 import logging
 from typing import Optional, Tuple
+from dotenv import load_dotenv
 from openai import OpenAI
+
+# Load environment variables
+load_dotenv()
 
 logger = logging.getLogger(__name__)
 

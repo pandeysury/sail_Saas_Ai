@@ -1,9 +1,13 @@
 from typing import Dict, Any
 import os
+from dotenv import load_dotenv
 from llama_index.core import StorageContext, VectorStoreIndex, Settings
 from llama_index.embeddings.openai import OpenAIEmbedding
 from llama_index.vector_stores.chroma import ChromaVectorStore
 import chromadb
+
+# Load environment variables
+load_dotenv()
 
 
 def build_retriever_bundle(paths: Dict[str, str], tenant: str, index: str) -> dict:
@@ -19,7 +23,8 @@ def build_retriever_bundle(paths: Dict[str, str], tenant: str, index: str) -> di
 
     # Embeddings (for query side similarity)
     Settings.embed_model = OpenAIEmbedding(
-        model=os.getenv("EMBED_MODEL", "text-embedding-3-large")
+        model=os.getenv("EMBED_MODEL", "text-embedding-3-large"),
+        api_key=os.getenv("OPENAI_API_KEY")
     )
 
     # Create a VectorStoreIndex bound to this store

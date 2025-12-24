@@ -9,6 +9,8 @@ import os
 from app.config import settings
 from app.state import get_bundle
 from app.routers import query as query_router
+from app.routers import chat as chat_router
+from app.routers import chat as chat_router
 
 app = FastAPI(title="RAG Hybrid API", version="1.0.0")
 
@@ -33,6 +35,8 @@ app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
 # ---------- Routers ----------
 app.include_router(query_router.router)
 app.include_router(query_router.router, prefix="/{client_id}")
+app.include_router(chat_router.router)
+app.include_router(chat_router.router, prefix="/{client_id}")
 
 
 # ---------- Serve tenant documents (dynamic) ----------
@@ -41,7 +45,9 @@ def serve_document(client_id: str, filename: str):
     """
     Serve documents from: /app/data/<client_id>/documents/<filename>
     """
-
+    # Convert client_id to lowercase for consistent file paths
+    client_id = client_id.lower()
+    
     client_docs_dir = (DATA_DIR / client_id / "documents").resolve()
     full_path = (client_docs_dir / filename).resolve()
 
