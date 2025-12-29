@@ -10,7 +10,8 @@ from app.config import settings
 from app.state import get_bundle
 from app.routers import query as query_router
 from app.routers import chat as chat_router
-from app.routers import chat as chat_router
+from app.routers import feedback as feedback_router
+from app.routers import dashboard as dashboard_router
 
 app = FastAPI(title="RAG Hybrid API", version="1.0.0")
 
@@ -37,6 +38,8 @@ app.include_router(query_router.router)
 app.include_router(query_router.router, prefix="/{client_id}")
 app.include_router(chat_router.router)
 app.include_router(chat_router.router, prefix="/{client_id}")
+app.include_router(feedback_router.router)  # Add feedback router
+app.include_router(dashboard_router.router)  # Add dashboard router
 
 
 # ---------- Serve tenant documents (dynamic) ----------

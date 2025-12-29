@@ -1,30 +1,70 @@
 # Python cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
 
 # Virtual environments
 venv/
 .venv/
+env/
 
 # Environment variables
 .env
-#env
-.env
-.env local
+.env.local
+.env.production
+.env.staging
 env.env
 
 # Databases
 *.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
 
 # Logs and temporary files
 logs/
 *.log
 *.bak
+server.log
 
 # Build/generated files
 *.txt
 !README.md
+!requirements.txt
+!requirementsdetiled.txt
 
 # Docker artifacts
 docker-compose.yml.bak
-.env
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary and backup files
+*.tmp
+*.temp
+.gitignore.new
+
+# Vector store and index files
+app/data/rsms/index_store/
+chroma/
+*.bin
+
+# Static build files (if auto-generated)
+static/assets/*.js
+static/assets/*.css
+!static/assets/style.css
