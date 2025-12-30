@@ -39,7 +39,9 @@ app.include_router(query_router.router, prefix="/{client_id}")
 app.include_router(chat_router.router)
 app.include_router(chat_router.router, prefix="/{client_id}")
 app.include_router(feedback_router.router)  # Add feedback router
+app.include_router(feedback_router.router, prefix="/{client_id}")
 app.include_router(dashboard_router.router)  # Add dashboard router
+app.include_router(dashboard_router.router, prefix="/{client_id}")
 
 
 # ---------- Serve tenant documents (dynamic) ----------

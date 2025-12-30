@@ -24,7 +24,7 @@
             z-index: 100;
         }
         .header-content {
-            max-width: 1200px;
+            /* max-width: 1500px; */
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
@@ -45,7 +45,7 @@
         .btn-danger { background: #dc3545; color: white; }
         .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
         
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .container { margin: 0 auto; padding: 20px; }
         
         .tabs {
             display: flex;
@@ -334,7 +334,7 @@
         <div class="header-content">
             <h1>🚀 RAG System Dashboard</h1>
             <div class="header-actions">
-                <span style="margin-right: 15px; color: #666;">Welcome, <strong id="username-display"></strong></span>
+                <span style="margin-right: 15px; color: #666; padding-top: 10px;">Welcome, <strong id="username-display"></strong></span>
                 <button class="btn btn-success" onclick="refreshData()">🔄 Refresh</button>
                 <button class="btn btn-primary" onclick="exportData()">📊 Export</button>
                 <button class="btn btn-danger" onclick="logout()">🚪 Logout</button>

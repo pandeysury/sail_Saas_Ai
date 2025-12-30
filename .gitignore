@@ -1,70 +1,69 @@
-# Python cache
+# Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Virtual environments
+# Virtual Environment
 venv/
-.venv/
 env/
+ENV/
 
-# Environment variables
+# Environment Variables
 .env
 .env.local
-.env.production
-.env.staging
-env.env
+.env.development
+.env.test
+.env.production.local
 
-# Databases
+# Database
 *.db
+*.sqlite3
 *.db-shm
 *.db-wal
-*.sqlite
-*.sqlite3
 
-# Logs and temporary files
-logs/
+# Logs
 *.log
-*.bak
+logs/
 server.log
 
-# Build/generated files
-*.txt
-!README.md
-!requirements.txt
-!requirementsdetiled.txt
-
-# Docker artifacts
-docker-compose.yml.bak
-
-# IDE and editor files
+# IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
 
-# OS generated files
+# OS
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
-# Temporary and backup files
+# Data directories
+app/data/
+data/
+
+# Temporary files
 *.tmp
 *.temp
-.gitignore.new
 
-# Vector store and index files
-app/data/rsms/index_store/
-chroma/
-*.bin
+# Docker
+.dockerignore
 
-# Static build files (if auto-generated)
-static/assets/*.js
-static/assets/*.css
-!static/assets/style.css
+# Backup files
+*.bak
+*.backup
