@@ -744,9 +744,17 @@ def _detect_query_intent(query: str) -> Dict[str, Any]:
     return intent
 
 # ============================================================================
-# MAIN ASK ENDPOINT
+# MAIN ASK ENDPOINT - Frontend Compatible
 # ============================================================================
 @router.post("/ask", response_model=AskResponse)
+def ask_endpoint(req: AskRequest):
+    """Main RAG endpoint - called by frontend as /api/ask"""
+    return ask(req)
+
+# ============================================================================
+# MAIN ASK ENDPOINT
+# ============================================================================
+@router.post("/query", response_model=AskResponse)
 def ask(req: AskRequest):
     """Main RAG endpoint with section-awareness and document summarization."""
     start_time = time.time()

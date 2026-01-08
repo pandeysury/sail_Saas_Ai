@@ -24,6 +24,26 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# ---------- Health Check Endpoints ----------
+@app.get("/health")
+@app.get("/healthz")
+def health_check():
+    """Health check endpoint for Docker and load balancers."""
+    return {"status": "healthy", "service": "RAG Hybrid API"}
+
+@app.get("/readyz")
+def readiness_check():
+    """Readiness check - verify if retriever is loaded."""
+    try:
+        bundle = get_bundle()
+        if bundle and hasattr(bundle, 'retriever') and bundle.retriever:
+            return {"status": "ready", "retriever_loaded": True}
+        else:
+            return {"status": "not_ready", "retriever_loaded": False}
+    except Exception as e:
+        logger.error(f"Readiness check failed: {e}")
+        return {"status": "not_ready", "error": str(e)}
+
 # ---------- Dynamic Paths (NO HARD-CODED PATHS) ----------
 PROJECT_ROOT = Path(__file__).resolve().parents[1]     # /app/
 STATIC_DIR = PROJECT_ROOT / "static"                   # /app/static/

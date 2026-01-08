@@ -1,115 +1,183 @@
 # RAG FastAPI (Hybrid BM25 + Vector + Rerank)
 
-Production-grade FastAPI service that loads the persisted hybrid retriever built by `indexer_hybrid_li.py`.
+Production-grade FastAPI service for Retrieval-Augmented Generation with hybrid search capabilities.
 
-## Quickstart
-1) Create your index with `indexer_hybrid_li.py` (same machine/image):
-   - This produces `<CLIENT_ROOT>/index_store/{chroma, nodes.jsonl, settings.json}`.
+## 🚀 Quick Start
 
-2) Configure env:
-   - Copy `.env.example` to `.env` and set `CLIENT_ROOT` and `OPENAI_API_KEY`.
-
-3) Install & run (dev):
+### 1. Setup Environment
 ```bash
-pip install -r requirements.txt
-uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+# Clone the repository
+git clone <your-repo-url>
+cd latest_pull_backend
+
+# Copy environment template
+cp .env.example .env
+
+# Add your OpenAI API key to .env
+nano .env
+# Replace: OPENAI_API_KEY=your_openai_api_key_here
+# With: OPENAI_API_KEY=sk-your-actual-key
 ```
 
-4) Production with Gunicorn:
+### 2. Run Locally (Recommended)
 ```bash
-gunicorn app.main:app -c gunicorn.conf.py
+# Start the application
+./start-local-no-docker.sh
 ```
 
-## Endpoints
-- `GET /healthz` — liveness
-- `GET /readyz` — retriever loaded?
-- `POST /query` — RAG query
-- `POST /rebuild` — optional rebuild BM25 from nodes.jsonl (no re-embed)
-- `GET /config` — current settings snapshot
+### 3. Access Your Application
+- **Main App**: http://localhost:8000
+- **Dashboard**: http://localhost:8000/static/dashboard-test.html
+- **API Docs**: http://localhost:8000/docs
+- **Health Check**: http://localhost:8000/healthz
 
-## Notes
-- Vector index lives under `<CLIENT_ROOT>/index_store/chroma`.
-- BM25 is rebuilt from `<CLIENT_ROOT>/index_store/nodes.jsonl` at startup.
-- Reranker selection & K-values read from `<CLIENT_ROOT>/index_store/settings.json`.
-- To re-index documents (incremental), run `indexer_hybrid_li.py` again; this service can stay up.
+## 📊 Features
 
+### Core RAG Capabilities
+- **Hybrid Search**: BM25 + Vector similarity + Reranking
+- **Multi-tenant**: Isolated data per client
+- **Conversational**: Chat history and context
+- **Intent Detection**: Automatic query classification
+- **Entity Recognition**: Enhanced query understanding
 
-## Scripts (Indexer & CLI Query)
-The project includes the two helper scripts under `scripts/`:
+### Dashboard & Analytics
+- **Real-time Metrics**: Query volume, quality, performance
+- **Q&A Monitoring**: Full question-answer pairs with quality scores
+- **Performance Analytics**: Response times and trends
+- **Client Statistics**: Per-tenant usage analytics
 
-- `scripts/indexer_hybrid_li.py` — builds the hybrid index (HTMLNodeParser + SentenceSplitter, Vector + BM25, reranker, incremental)
-- `scripts/query_hybrid_demo.py` — quick CLI to test the persisted index
+### API Endpoints
+- `POST /api/ask` — Main RAG query endpoint
+- `GET /api/history` — Conversation history
+- `GET /api/dashboard/*` — Analytics endpoints
+- `GET /healthz` — Health check
+- `GET /readyz` — Readiness check
 
-### Run the indexer
+## 🛠️ Development
+
+### Docker Setup (Alternative)
 ```bash
-python scripts/indexer_hybrid_li.py   --client_root "C:/sms/andriki"   --tags "h1,h2,h3,ul,li,p"   --bm25_k 12   --fusion_mode reciprocal_rerank   --chunk_size 900   --chunk_overlap 150   --reranker sbert
+# Fix Docker permissions (if needed)
+./setup-docker.sh
+
+# Start with Docker
+docker-compose -f docker-compose.local.yml up --build
 ```
 
-### Test queries from CLI
+### Testing
 ```bash
-python scripts/query_hybrid_demo.py --client_root "C:/sms/andriki" --query "visitor induction checklist" --k 6
+# Add sample data for testing
+python3 add_sample_data.py
+
+# Test dashboard API
+python3 test_dashboard_api.py
 ```
 
+## 📁 Project Structure
 
----
-
-## Local HTML Tester (no React)
-Point your `index.html` to the API and open it in a browser.
-- Place your static files somewhere your web server can serve:
-  - `/srv/www/index.html`, `/srv/www/script.js`, `/srv/www/style.css`
-- Ensure the FastAPI runs at the expected base URL (`/api`), which this project exposes.
-- The frontend calls:
-  - `GET /api/history?conversation_id=...`
-  - `POST /api/ask` with `{ conversation_id, client_id, question }`
-
-This project now implements those exact endpoints and persists chat turns using SQLite (see `app/memory_store.py`).
-
-
-### Conversation endpoints
-- `GET /api/threads` → list conversations (id, last message, counts)
-- `POST /api/clear_conversation` → body `{ "conversation_id": "xyz" }`
-- `DELETE /api/conversation/{conversation_id}` → delete all rows
-- `POST /api/cleanup` → body `{ "days_old": 30, "keep_persistent": true }`
-- `GET /api/search_history?term=..."` → search across past messages
-
-
-
-## Multitenancy & Isolation
-- All conversations are **namespaced** as `client_id::conversation_id` in the DB.
-- Every endpoint takes a `client_id` and only returns data for that client.
-- If `client_id` is omitted, the backend uses `DEFAULT_CLIENT_ID` from `.env`.
-
-### Endpoint parameters (client_id)
-- `POST /api/ask` — body includes `client_id`
-- `GET /api/history?conversation_id=...&client_id=...`
-- `GET /api/threads?client_id=...`
-- `DELETE /api/conversation/{conversation_id}?client_id=...`
-- `POST /api/clear_conversation` — body includes `client_id`
-- `GET /api/search_history?term=...&client_id=...`
-- `POST /api/set_title` — body includes `client_id`
-- `GET /api/thread/{conversation_id}?client_id=...`
-
-
-
-## SIRE-driven enrichment (rules.yaml)
-1. Build rules from your SIRE SQLite:
-   ```bash
-   python tools/sire_rules_builder.py --sqlite "C:\sms\mterms\sire_viq.sqlite" --out rules.yaml --topk 25
-   ```
-2. Index your HTML SOPs with enrichment:
-   ```bash
-   python tools/indexer_hybrid_li.py --docs "C:\sms\andriki\documents" --rules rules.yaml --out storage_hybrid
-   ```
-3. Point backend to the new storage (in `.env`):
-   ```env
-   STORAGE_DIR=storage_hybrid
-   ```
-
-### Optional: OpenAI LLM reranker
-Enable LLM reranking over top passages:
-```env
-RERANK_MODE=llm
-OPENAI_RERANK_MODEL=gpt-4o-mini
-RERANK_MAX_PASSAGES=40
-OPENAI_API_KEY=sk-...
 ```
+latest_pull_backend/
+├── app/
+│   ├── routers/          # API endpoints
+│   │   ├── query.py      # Main RAG endpoint
+│   │   ├── chat.py       # Chat functionality
+│   │   ├── dashboard.py  # Analytics API
+│   │   └── feedback.py   # Feedback system
+│   ├── services/         # Business logic
+│   ├── utils/           # Utilities
+│   ├── config.py        # Configuration
+│   ├── main.py          # FastAPI app
+│   └── memory_store.py  # Chat history
+├── static/              # Frontend files
+├── tools/               # Indexing scripts
+├── scripts/             # Helper scripts
+└── requirements.txt     # Dependencies
+```
+
+## 🔧 Configuration
+
+Key environment variables in `.env`:
+
+| Variable | Description | Default |
+|----------|-------------|----------|
+| `OPENAI_API_KEY` | OpenAI API key | Required |
+| `DEFAULT_CLIENT_ID` | Default tenant | `rsms` |
+| `PORT` | Server port | `8000` |
+| `ALLOW_ORIGINS` | CORS origins | `*` |
+| `OPENAI_CHAT_MODEL` | Chat model | `gpt-4o-mini` |
+| `INITIAL_RETRIEVE_K` | Initial retrieval count | `12` |
+
+## 📚 Usage Examples
+
+### Query the RAG System
+```bash
+curl -X POST http://localhost:8000/api/ask \
+  -H "Content-Type: application/json" \
+  -d '{
+    "question": "What records should be maintained for passage planning?",
+    "client_id": "rsms",
+    "conversation_id": "test-123"
+  }'
+```
+
+### Get Dashboard Metrics
+```bash
+curl http://localhost:8000/api/dashboard/overview
+```
+
+## 🚢 Maritime Domain
+
+This system is optimized for maritime Safety Management System (SMS) documentation:
+
+- **Passage Planning**: Route planning procedures and records
+- **Bridge Operations**: Navigation and watchkeeping procedures  
+- **Cargo Operations**: Loading, securing, and monitoring procedures
+- **Emergency Response**: Fire, collision, and medical emergency procedures
+- **Compliance**: SOLAS, MARPOL, and flag state requirements
+
+## 🔍 Advanced Features
+
+### Query Intent Detection
+- **Recordkeeping**: "What records should be maintained..."
+- **Procedural**: "How to conduct..."
+- **Requirements**: "What are the requirements..."
+- **Summarization**: "Summarize the procedure..."
+
+### Multi-tenant Architecture
+- Isolated data per client
+- Client-scoped conversation history
+- Per-tenant analytics and metrics
+
+### Performance Optimization
+- Hybrid retrieval (BM25 + Vector)
+- LLM-based reranking
+- Caching and connection pooling
+- Async processing where possible
+
+## 📈 Monitoring
+
+The dashboard provides:
+- **Overview Metrics**: Total queries, avg quality, response time
+- **Q&A Details**: Full questions and answers with quality indicators
+- **Performance Timeline**: Daily trends and patterns
+- **Client Analytics**: Per-tenant usage statistics
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests if applicable
+5. Submit a pull request
+
+## 📄 License
+
+[Add your license here]
+
+## 🆘 Support
+
+For issues and questions:
+1. Check the [API documentation](http://localhost:8000/docs)
+2. Review the dashboard for system health
+3. Check logs for error details
+4. Open an issue on GitHub

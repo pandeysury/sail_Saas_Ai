@@ -28,20 +28,16 @@ ENV/
 # Environment Variables
 .env
 .env.local
-.env.development
-.env.test
-.env.production.local
+.env.production
 
-# Database
+# Database Files
 *.db
+*.sqlite
 *.sqlite3
-*.db-shm
-*.db-wal
 
 # Logs
 *.log
 logs/
-server.log
 
 # IDE
 .vscode/
@@ -53,17 +49,23 @@ server.log
 .DS_Store
 Thumbs.db
 
-# Data directories
-app/data/
+# Project Specific
 data/
+storage/
+index_store/
+chroma/
+chat_history.db
+query_logs.db
+feedback.db
 
-# Temporary files
+# Temporary Files
 *.tmp
 *.temp
+temp/
+tmp/
 
 # Docker
 .dockerignore
 
-# Backup files
-*.bak
-*.backup
+# Node modules (if any)
+node_modules/

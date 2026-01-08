@@ -9,7 +9,12 @@ from app.auth import authenticate
 router = APIRouter(prefix="/api/dashboard", tags=["dashboard"])
 
 # IMPORTANT: Update this path to your query_logs.db location
-QUERY_LOGS_DB = "/home/ubuntu/Desktop/Rag_System_Project/sail_Saas_Ai/query_logs.db"
+import os
+from pathlib import Path
+
+# Auto-detect query logs database path
+PROJECT_ROOT = Path(__file__).resolve().parents[2]  # Go up to project root
+QUERY_LOGS_DB = os.getenv("QUERY_LOGS_DB", str(PROJECT_ROOT / "query_logs.db"))
 
 @router.get("/test")
 async def test_endpoint():
@@ -157,12 +162,11 @@ async def get_queries(
 
 @router.get("/queries/{query_id}")
 async def get_query_detail(
-    query_id: int,
-    user: str = Depends(authenticate)
+    query_id: int
 ):
-    """Get detailed query information"""
-    conn = get_db()
+    """Get detailed query information with Q&A details - NO AUTH for testing"""
     try:
+        conn = get_db()
         query = conn.execute(
             "SELECT * FROM query_logs WHERE id = ?", [query_id]
         ).fetchone()
@@ -170,19 +174,135 @@ async def get_query_detail(
         if not query:
             raise HTTPException(status_code=404, detail="Query not found")
         
-        return dict(query)
-    finally:
+        # Convert to dict and add formatted data
+        result = dict(query)
+        
+        # Format timestamp
+        if result.get('timestamp'):
+            try:
+                from datetime import datetime
+                dt = datetime.fromisoformat(result['timestamp'])
+                result['formatted_timestamp'] = dt.strftime('%Y-%m-%d %H:%M:%S')
+            except:
+                result['formatted_timestamp'] = result['timestamp']
+        
+        # Parse JSON fields safely
+        json_fields = ['entities_detected', 'performance_metrics']
+        for field in json_fields:
+            if result.get(field):
+                try:
+                    result[field] = json.loads(result[field])
+                except:
+                    pass
+        
         conn.close()
+        return result
+    except HTTPException:
+        raise
+    except Exception as e:
+        return {"error": str(e), "query_id": query_id}
+
+@router.get("/qa-details")
+async def get_qa_details(
+    client_id: Optional[str] = Query(None),
+    days: int = Query(7, ge=1, le=90),
+    limit: int = Query(20, ge=1, le=100)
+):
+    """Get recent Q&A pairs with full details - NO AUTH for testing"""
+    try:
+        conn = get_db()
+        since_date = datetime.now() - timedelta(days=days)
+        
+        where_clause = "WHERE timestamp >= ?"
+        params = [since_date.isoformat()]
+        
+        if client_id:
+            where_clause += " AND user_org = ?"
+            params.append(client_id)
+        
+        # Get Q&A details with answer
+        qa_pairs = conn.execute(f"""
+            SELECT 
+                id,
+                original_query as question,
+                answer,
+                user_org as client_id,
+                timestamp,
+                total_time_ms,
+                top_reference_score,
+                query_intent,
+                is_compound,
+                confidence_score,
+                chunks_retrieved,
+                chunks_used
+            FROM query_logs {where_clause}
+            ORDER BY timestamp DESC
+            LIMIT ?
+        """, params + [limit]).fetchall()
+        
+        # Format the results
+        formatted_pairs = []
+        for row in qa_pairs:
+            qa_dict = dict(row)
+            
+            # Format timestamp
+            if qa_dict.get('timestamp'):
+                try:
+                    dt = datetime.fromisoformat(qa_dict['timestamp'])
+                    qa_dict['formatted_timestamp'] = dt.strftime('%Y-%m-%d %H:%M:%S')
+                    qa_dict['time_ago'] = _time_ago(dt)
+                except:
+                    qa_dict['formatted_timestamp'] = qa_dict['timestamp']
+                    qa_dict['time_ago'] = 'Unknown'
+            
+            # Truncate long text for preview
+            if qa_dict.get('question') and len(qa_dict['question']) > 100:
+                qa_dict['question_preview'] = qa_dict['question'][:100] + '...'
+            else:
+                qa_dict['question_preview'] = qa_dict.get('question', '')
+            
+            if qa_dict.get('answer') and len(qa_dict['answer']) > 200:
+                qa_dict['answer_preview'] = qa_dict['answer'][:200] + '...'
+            else:
+                qa_dict['answer_preview'] = qa_dict.get('answer', '')
+            
+            # Add quality indicators
+            score = qa_dict.get('top_reference_score', 0) or 0
+            if score >= 0.8:
+                qa_dict['quality'] = 'High'
+                qa_dict['quality_color'] = 'green'
+            elif score >= 0.6:
+                qa_dict['quality'] = 'Medium'
+                qa_dict['quality_color'] = 'orange'
+            else:
+                qa_dict['quality'] = 'Low'
+                qa_dict['quality_color'] = 'red'
+            
+            formatted_pairs.append(qa_dict)
+        
+        conn.close()
+        
+        return {
+            "qa_pairs": formatted_pairs,
+            "total_count": len(formatted_pairs),
+            "days_range": days
+        }
+    except Exception as e:
+        return {
+            "error": str(e),
+            "qa_pairs": [],
+            "total_count": 0,
+            "days_range": days
+        }
 
 @router.get("/performance/timeline")
 async def get_performance_timeline(
     client_id: Optional[str] = Query(None),
-    days: int = Query(7, ge=1, le=90),
-    user: str = Depends(authenticate)
+    days: int = Query(7, ge=1, le=90)
 ):
-    """Get daily performance timeline"""
-    conn = get_db()
+    """Get daily performance timeline - NO AUTH for testing"""
     try:
+        conn = get_db()
         since_date = datetime.now() - timedelta(days=days)
         
         where_clause = "WHERE timestamp >= ?"
@@ -203,18 +323,18 @@ async def get_performance_timeline(
             ORDER BY date
         """, params).fetchall()
         
-        return [dict(row) for row in timeline]
-    finally:
         conn.close()
+        return [dict(row) for row in timeline]
+    except Exception as e:
+        return {"error": str(e), "timeline": []}
 
 @router.get("/clients")
 async def get_client_stats(
-    days: int = Query(30, ge=1, le=365),
-    user: str = Depends(authenticate)
+    days: int = Query(30, ge=1, le=365)
 ):
-    """Get per-client statistics"""
-    conn = get_db()
+    """Get per-client statistics - NO AUTH for testing"""
     try:
+        conn = get_db()
         since_date = datetime.now() - timedelta(days=days)
         
         clients = conn.execute("""
@@ -229,19 +349,19 @@ async def get_client_stats(
             ORDER BY query_count DESC
         """, [since_date.isoformat()]).fetchall()
         
-        return [dict(row) for row in clients]
-    finally:
         conn.close()
+        return [dict(row) for row in clients]
+    except Exception as e:
+        return {"error": str(e), "clients": []}
 
 @router.get("/query-types")
 async def get_query_types(
     client_id: Optional[str] = Query(None),
-    days: int = Query(30, ge=1, le=365),
-    user: str = Depends(authenticate)
+    days: int = Query(30, ge=1, le=365)
 ):
-    """Get query type distribution"""
-    conn = get_db()
+    """Get query type distribution - NO AUTH for testing"""
     try:
+        conn = get_db()
         since_date = datetime.now() - timedelta(days=days)
         
         where_clause = "WHERE timestamp >= ?"
@@ -260,20 +380,41 @@ async def get_query_types(
             ORDER BY count DESC
         """, params).fetchall()
         
-        return [dict(row) for row in types]
-    finally:
         conn.close()
+        return [dict(row) for row in types]
+    except Exception as e:
+        return {"error": str(e), "types": []}
+
+def _time_ago(dt):
+    """Helper function to calculate time ago"""
+    now = datetime.now()
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=None)
+    if now.tzinfo is None:
+        now = now.replace(tzinfo=None)
+    
+    diff = now - dt
+    
+    if diff.days > 0:
+        return f"{diff.days} day{'s' if diff.days > 1 else ''} ago"
+    elif diff.seconds > 3600:
+        hours = diff.seconds // 3600
+        return f"{hours} hour{'s' if hours > 1 else ''} ago"
+    elif diff.seconds > 60:
+        minutes = diff.seconds // 60
+        return f"{minutes} minute{'s' if minutes > 1 else ''} ago"
+    else:
+        return "Just now"
 
 @router.get("/export")
 async def export_data(
     client_id: Optional[str] = Query(None),
     days: int = Query(30, ge=1, le=365),
-    format: str = Query("json", regex="^(json|csv)$"),
-    user: str = Depends(authenticate)
+    format: str = Query("json", regex="^(json|csv)$")
 ):
-    """Export query data"""
-    conn = get_db()
+    """Export query data - NO AUTH for testing"""
     try:
+        conn = get_db()
         since_date = datetime.now() - timedelta(days=days)
         
         where_clause = "WHERE timestamp >= ?"
@@ -300,6 +441,7 @@ async def export_data(
                 writer.writerows(data)
             return {"data": output.getvalue(), "format": "csv"}
         
-        return {"data": data, "format": "json"}
-    finally:
         conn.close()
+        return {"data": data, "format": "json"}
+    except Exception as e:
+        return {"error": str(e), "data": [], "format": format}

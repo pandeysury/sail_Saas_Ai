@@ -299,6 +299,6 @@ def log_startup_config():
     logger.info("=" * 70)
 
 
-# Log on import (disable with env var if needed)
+# Log on import (enable for development)
 if os.getenv("LOG_CONFIG_ON_IMPORT", "true").lower() == "true":
     log_startup_config()
