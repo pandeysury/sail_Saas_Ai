@@ -1,0 +1,15 @@
+version: '3.8'
+services:
+  sail-backend:
+    build: .
+    container_name: sail-backend-app
+    restart: unless-stopped
+    ports:
+      - "8001:8001"
+    volumes:
+      - ./app/data:/app/data:rw
+    environment:
+      - ENVIRONMENT=production
+      - PORT=8001
+    env_file:
+      - .env
