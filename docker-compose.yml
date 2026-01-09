@@ -1,0 +1,13 @@
+services:
+  sail-rag-app:
+    image: sail-rag-app:latest
+    container_name: sail-rag-app
+    build:
+      context: .
+    ports:
+      - "8001:8000"
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+    environment:
+      ENV: production
